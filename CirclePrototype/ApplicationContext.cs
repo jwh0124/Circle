@@ -15,5 +15,7 @@ namespace CirclePrototype
         }
 
         public DbSet<User> Users { get; set; }
+
+        public DbSet<History> Histories {get; set;}
     }
 }

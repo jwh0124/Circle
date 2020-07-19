@@ -33,6 +33,8 @@ namespace CirclePrototype
 
             services.AddTransient<IUserRepository, UserRepository>();
 
+            services.AddTransient<IHistoryRepository, HistoryRepository>();
+
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
 
