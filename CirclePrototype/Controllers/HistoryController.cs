@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
 using CirclePrototype.Models;
 using CirclePrototype.Repository;
 using LightQuery;
 using LightQuery.Client;
+using LightQuery.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CirclePrototype.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class HistoryController : ControllerBase
@@ -23,13 +22,12 @@ namespace CirclePrototype.Controllers
             _repository = repository;
         }
 
-        [AllowAnonymous]
-        [LightQuery(forcePagination: true, defaultPageSize: 3)]
+        [AsyncLightQuery(forcePagination: false, defaultPageSize: 3, defaultSort: "UserName desc")]
         [ProducesResponseType(typeof(PaginationResult<History>), 200)]
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            return Ok(_repository.GetList());
+            return Ok(await _repository.GetList());
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace CirclePrototype.Models
 {
+    [Table("tbl_users")]
     public class User
     {
         [Key]

@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using CirclePrototype.Models;
+using LightQuery.Client;
+using Microsoft.EntityFrameworkCore;
 
 namespace CirclePrototype.Repository
 {
@@ -13,9 +16,9 @@ namespace CirclePrototype.Repository
             _context = context;
         }
 
-        public IEnumerable<History> GetList()
+        public async Task<List<History>> GetList()
         {
-            return _context.Histories.ToList();
+            return await _context.Histories.ToListAsync();
         }
     }
 }

@@ -26,7 +26,7 @@ namespace CirclePrototype.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Histories");
+                    b.ToTable("tbl_histories");
                 });
 
             modelBuilder.Entity("CirclePrototype.Models.User", b =>
@@ -43,7 +43,7 @@ namespace CirclePrototype.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("tbl_users");
                 });
 #pragma warning restore 612, 618
         }

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CirclePrototype.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20200623115034_InitialCreate")]
+    [Migration("20200719051733_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -16,6 +16,20 @@ namespace CirclePrototype.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.5");
+
+            modelBuilder.Entity("CirclePrototype.Models.History", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("tbl_histories");
+                });
 
             modelBuilder.Entity("CirclePrototype.Models.User", b =>
                 {
@@ -31,7 +45,7 @@ namespace CirclePrototype.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("tbl_users");
                 });
 #pragma warning restore 612, 618
         }
